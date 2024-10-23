@@ -1,6 +1,6 @@
 import unittest
 
-from white_box import verify_age, validate_credit_card, calculate_quantity_discount, grade_quiz, VendingMachine, TrafficLight, UserAuthentication, DocumentEditingSystem, ElevatorSystem, BankAccount, BankingSystem, Product, ShoppingCart
+from src.white_box import verify_age, validate_credit_card, calculate_quantity_discount, grade_quiz, VendingMachine, TrafficLight, UserAuthentication, DocumentEditingSystem, ElevatorSystem, BankAccount, BankingSystem, Product, ShoppingCart
 
 class TestFunctions(unittest.TestCase):
 
