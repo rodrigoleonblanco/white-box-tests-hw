@@ -1,0 +1,32 @@
+# .github/workflows/run-tests.yml
+name: Run Unit Tests
+
+on:
+  pull_request:
+    branches:
+      - main  # Puedes cambiar esto si usas otra rama como principal
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.12.7'  # Define la versión de Python que usas, por ejemplo, '3.10'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        # pip install -r requirements.txt  # Si tienes un archivo de dependencias, descomenta esta línea
+
+    - name: Run tests
+      run: |
+        python -m unittest discover -s tests  # Asegúrate que los tests estén en una carpeta 'tests'
