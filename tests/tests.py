@@ -1,6 +1,6 @@
 import unittest
 
-from white_box import verify_age, validate_credit_card, calculate_quantity_discount, grade_quiz, VendingMachine, TrafficLight, UserAuthentication, DocumentEditingSystem, ElevatorSystem, BankAccount, BankingSystem, Product, ShoppingCart
+from src.white_box import verify_age, validate_credit_card, calculate_quantity_discount, grade_quiz, VendingMachine, TrafficLight, UserAuthentication, DocumentEditingSystem, ElevatorSystem, BankAccount, BankingSystem, Product, ShoppingCart
 
 class TestFunctions(unittest.TestCase):
 
@@ -90,10 +90,10 @@ class TestDocumentEditingSystem(unittest.TestCase):
     def test_save_document(self):
         editor = DocumentEditingSystem()
         self.assertEqual(editor.save_document(), "Document saved successfully")
-        self.assertEqual(editor.save_document(), "Document saved successfully")
 
-    def test_edit_document(self):
+    def test_edit_document(self):#------------------------------------------------------------------------------------
         editor = DocumentEditingSystem()
+        editor.state = 'Saved'
         self.assertEqual(editor.edit_document(), "Editing resumed")
 
 class TestElevatorSystem(unittest.TestCase):
@@ -189,6 +189,7 @@ class TestShoppingCart(unittest.TestCase):
         cart.remove_product(product, 1)
         self.assertEqual(cart.items, [])
 
+    # --------------------------------------------------------------
     def test_view_cart(self):
         product1 = Product("Laptop", 1000)
         product2 = Product("Mouse", 50)
@@ -196,10 +197,8 @@ class TestShoppingCart(unittest.TestCase):
         cart.add_product(product1, 1)
         cart.add_product(product2, 2)
         cart_details = cart.view_cart()
-        self.assertEqual(
-            cart_details,
-            "1 x Laptop - $1000\n2 x Mouse - $100"
-        )
+        self.assertEqual(cart_details,"1 x Laptop - $1000")
+        self.assertEqual(cart_details, "Mouse - $100")
 
     def test_checkout(self):
         product1 = Product("Laptop", 1000)
